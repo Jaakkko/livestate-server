@@ -11,13 +11,13 @@ export default class Queue {
     }
 
     this.executing = true
-    this.process()
+    this.process.apply(this)
   }
 
   private process() {
     if (this.queue.length > 0) {
       const [run] = this.queue.splice(0, 1)
-      void run().then(this.process)
+      void run().then(this.process.bind(this))
       return
     }
     this.executing = false

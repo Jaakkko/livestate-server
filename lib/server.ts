@@ -27,7 +27,7 @@ interface Server {
   use: (route: Route) => void
 }
 
-export default function server(configuration: Configuration): Server {
+export function server(configuration: Configuration): Server {
   const wss = new WebSocket.Server({ noServer: true })
   wss.on('connection', async (ws, request) => {
     const { wsContext } = (request as unknown) as {

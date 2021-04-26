@@ -70,7 +70,7 @@ export type RouteCreator<Interface, RouteParams> = <Context>(
   clientFunctions: ClientFunctions<RouteParams, Context, Interface>
 ) => Route<Context, RouteParams>
 
-export default function createRoute<Interface, RouteParams>(
+export function createRoute<Interface, RouteParams>(
   pathSkeleton: string,
   getChannel: (params: RouteParams) => string | undefined,
   stateTemplate: State<Interface>

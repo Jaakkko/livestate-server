@@ -2,7 +2,7 @@ import WebSocket from 'ws'
 import { ChannelManager } from './server'
 
 const channels = new Map<string, Set<WebSocket>>()
-const channelManager: ChannelManager = {
+export const inMemoryChannelManager: ChannelManager = {
   post(channel: string, message: string) {
     channels.get(channel)?.forEach((client) => {
       client.send(message)
@@ -29,5 +29,3 @@ const channelManager: ChannelManager = {
     }
   },
 }
-
-export default channelManager
